@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Setup Screen -->
+    <div id="setup-screen" class="quiz-container">
+        <div class="quiz-header">
+            <h2>🎯 Interactive Quiz </h2>
+            <p class="subtitle">Generate questions from the internet and test your knowledge!</p>
+            
+            <div class="setup-options">
+                <div class="option-group">
+                    <label for="category">📚 Category:</label>
+                    <select id="category">
+                        <option value="">Any Category</option>
+                        <option value="9">General Knowledge</option>
+                        <option value="10">Entertainment: Books</option>
+                        <option value="11">Entertainment: Film</option>
+                        <option value="12">Entertainment: Music</option>
+                        <option value="17">Science & Nature</option>
+                        <option value="18">Science: Computers</option>
+                        <option value="19">Science: Mathematics</option>
+                        <option value="20">Mythology</option>
+                        <option value="21">Sports</option>
+                        <option value="22">Geography</option>
+                        <option value="23">History</option>
+                        <option value="24">Politics</option>
+                        <option value="25">Art</option>
+                        <option value="26">Celebrities</option>
+                        <option value="27">Animals</option>
+                    </select>
+                </div>
+
+                <div class="option-group">
+                    <label for="difficulty">⚡ Difficulty:</label>
+                    <select id="difficulty">
+                        <option value="">Any Difficulty</option>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+
+                <div class="option-group">
+                    <label for="amount">🔢 Number of Questions:</label>
+                    <select id="amount">
+                        <option value="5">5 Questions</option>
+                        <option value="10" selected>10 Questions</option>
+                        <option value="15">15 Questions</option>
+                        <option value="20">20 Questions</option>
+                    </select>
+                </div>
+
+                <div class="option-group">
+                    <label for="type">📝 Question Type:</label>
+                    <select id="type">
+                        <option value="">Any Type</option>
+                        <option value="multiple">Multiple Choice</option>
+                        <option value="boolean">True/False</option>
+                    </select>
+                </div>
+            </div>
+
+            <button id="start-quiz" class="start-btn">🚀 Generate Quiz</button>
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Generating questions from the internet...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quiz-screen" class="quiz-container hidden">
+        <div class="quiz-header">
+            <div class="quiz-info">
+                <div id="timer">⏱️ Time: <span id="time">0</span>s</div>
+                <div id="progress">Question <span id="current">1</span> of <span id="total">10</span></div>
+                <div id="score-display">✅ Score: <span id="current-score">0</span></div>
+            </div>
+            <div class="question-meta">
+                <span id="category-display" class="meta-tag"></span>
+                <span id="difficulty-display" class="meta-tag"></span>
+            </div>
+            <h2 id="question">Loading question...</h2>
+            <div id="answers-container">
+                <ul id="multiple-choice" class="answers-list">
+                    <li>
+                        <input type="radio" name="answer" id="a" class="answer">
+                        <label for="a" id="a_text">Answer A</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="answer" id="b" class="answer">
+                        <label for="b" id="b_text">Answer B</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="answer" id="c" class="answer">
+                        <label for="c" id="c_text">Answer C</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="answer" id="d" class="answer">
+                        <label for="d" id="d_text">Answer D</label>
+                    </li>
+                </ul>
+                
+                <div id="true-false" class="answers-list hidden">
+                    <button class="tf-btn" data-answer="true">✅ True</button>
+                    <button class="tf-btn" data-answer="false">❌ False</button>
+                </div>
+            </div>
+            
+            <div id="feedback" class="feedback hidden"></div>
+        </div>
+        <div class="quiz-actions">
+            <button id="submit" class="action-btn">Submit Answer</button>
+            <button id="next" class="action-btn hidden">Next Question</button>
+            <button id="new-quiz" class="secondary-btn">🔄 New Quiz</button>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="results-screen" class="quiz-container hidden">
+        <div class="quiz-header">
+            <h2>🎉 Quiz Complete!</h2>
+            <div class="results">
+                <div class="score-circle">
+                    <div class="score-text">
+                        <span id="final-score">0</span>%
+                    </div>
+                </div>
+                <div class="results-details">
+                    <p>You answered <strong><span id="correct-answers">0</span>/<span id="total-questions">0</span></strong> questions correctly</p>
+                    <p>Total time: <strong><span id="final-time">0</span> seconds</strong></p>
+                    <p id="performance-message"></p>
+                </div>
+                <div class="results-actions">
+                    <button id="play-again" class="action-btn">🎯 Play Again</button>
+                    <button id="new-settings" class="secondary-btn">⚙️ Change Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
